@@ -4,6 +4,7 @@ import { FaRegPlusSquare } from "react-icons/fa";
 import { ImCompass2 } from "react-icons/im";
 import { FiHeart } from "react-icons/fi";
 import { BsPersonCircle, BsSearch } from "react-icons/bs";
+import { AiFillFacebook } from "react-icons/ai";
 
 const headerIcon = {
   HiHome,
@@ -13,6 +14,7 @@ const headerIcon = {
   FiHeart,
   BsPersonCircle,
   BsSearch,
+  AiFillFacebook,
 };
 
 export { headerIcon };
