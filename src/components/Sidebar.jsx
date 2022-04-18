@@ -4,7 +4,10 @@ import styled from "styled-components";
 import { headerIcon } from "../shared/Icon/icons";
 
 export const Sidebar = () => {
-  const [이름, 이름변경] = useState(["T없이 맑은 I", "ㅎr늘색 풍선"]);
+  const [이름, 이름변경] = useState(["T없이맑은I", "ㅎr늘색풍선"]);
+  if (window.location.pathname === "/") return null;
+  if (window.location.pathname === "/signup") return null;
+  if (window.location.pathname === "/addpost") return null;
 
   return (
     <StTitle>

@@ -1,0 +1,306 @@
+.BackgroundOpacity {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 500;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.CancelAddPost {
+  font-size: 50px;
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  color: white;
+}
+.CancelAddPost:hover {
+  cursor: pointer;
+}
+
+.FakeModalAddPost {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  top: 15%;
+  bottom: 15%;
+  left: 37%;
+  right: 35%;
+  width: 40rem;
+  height: 40rem;
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+}
+@media (max-width: 2100px) {
+  .FakeModalAddPost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 15%;
+    bottom: 15%;
+    left: 34%;
+    right: 40%;
+    width: 40rem;
+    height: 40rem;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 1800px) {
+  .FakeModalAddPost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 15%;
+    bottom: 15%;
+    left: 31%;
+    right: 40%;
+    width: 40rem;
+    height: 40rem;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 1600px) {
+  .FakeModalAddPost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 15%;
+    bottom: 15%;
+    left: 29%;
+    right: 40%;
+    width: 40rem;
+    height: 40rem;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 1400px) {
+  .FakeModalAddPost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 15%;
+    bottom: 15%;
+    left: 26%;
+    right: 40%;
+    width: 40rem;
+    height: 40rem;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 1200px) {
+  .FakeModalAddPost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 15%;
+    bottom: 15%;
+    left: 23.5%;
+    right: 40%;
+    width: 40rem;
+    height: 40rem;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 1000px) {
+  .FakeModalAddPost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 15%;
+    bottom: 15%;
+    left: 17.5%;
+    right: 40%;
+    width: 40rem;
+    height: 40rem;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+  }
+}
+@media (max-width: 900px) {
+  .FakeModalAddPost {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    top: 15%;
+    bottom: 10%;
+    left: 10%;
+    right: 15%;
+    width: 40rem;
+    height: 40rem;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+  }
+}
+
+.PostSideText {
+  border: 1px solid red;
+  font-size: 100px;
+}
+
+.NewPostCreate {
+  margin: 10px 0 0 450px;
+  font-size: 17px;
+  font-weight: 600;
+  position: fixed;
+}
+
+.TopLine {
+  color: rgba(128, 128, 128, 0.5);
+  width: 997px;
+  margin-top: 50px;
+}
+
+.ImgSideBox {
+  border: 1px solid #aaaaaa;
+  width: 596px;
+  height: 550px;
+  margin-bottom: 30px;
+}
+
+.PhotoIcon {
+  font-size: 90px;
+  transform: rotate(-10deg);
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 200px;
+  left: 250px;
+}
+.PlayIcon {
+  font-size: 75px;
+  transform: rotate(5deg);
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 230px;
+  left: 300px;
+  width: auto;
+  background-color: white;
+}
+
+.InputGuideText {
+  font-size: 25px;
+  font-weight: 300;
+  margin: 0 0 250px 0px;
+}
+
+.InputImgBox {
+  margin: 350px 0 0 70px;
+}
+
+.InputLabelText {
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.UploadFileBox label {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  margin: 30px 0 0 150px;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #00a6ff;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+.UploadFileBox input[tyle="file"] {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.PostSide {
+  border: 1px solid #aaaaaa;
+  width: 400px;
+  height: 550px;
+}
+
+.RightBox1 {
+  border: 1px solid blue;
+  width: 400px;
+  height: 80px;
+}
+.RightBox2 {
+  border: 1px solid #aaaaaa;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 393px;
+  height: 300px;
+}
+.RightBox3 {
+  width: 363px;
+  height: 80px;
+  border: 1px solid #aaaaaa;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
+.RigthIcon {
+  border: 1px solid #aaaaaa;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 30px;
+  height: 81px;
+  padding-bottom: 1px;
+}
+.RightBox4 {
+  width: 363px;
+  height: 81px;
+  border: 1px solid #aaaaaa;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  font-size: 20px;
+  line-height: 400%;
+  font-weight: bold;
+}
+.RigthIcon2 {
+  border: 1px solid #aaaaaa;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 30px;
+  height: 81px;
+  padding-bottom: 1px;
+}
