@@ -1,170 +1,162 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from 'react-redux';
-import { IconName } from "react-icons/ai";
-
+import { useDispatch, useSelector } from "react-redux";
+import { headerIcon } from "../shared/Icon/icons";
+import { AiOutlineFontColors } from "react-icons/ai";
+import { actionCreators as userActions } from '../redux/modules/user';
 
 const Login = (props) => {
+  const {history} = props
+  const dispatch = useDispatch();
 
+  const [nickname, setId] = useState("");
+  const [password, setPwd] = useState("");
+
+  const login = () => {
+
+    dispatch(userActions.loginDB(nickname, password));
+  }
 
   return (
-    <ImgContainer>
-      <div className="img">
-        <img src="img/iphone.png" back_size="100% 100%" height="500px"></img>
-      </div>
+    <div className="login" style= {{display: "flex"}}>
+      <ImgContainer>
+          <img src="img/iphone.png"  height="600px"></img>        
+      </ImgContainer>
       <LoginContainer>
         <form>
-          <img 
-            src="img/insta_logo.png" 
-            back_size="100% 100%" 
-            width="200" 
-            height="60px" 
-            >
-            </img>
-          <p>친구들의 사진과 동영상을 보려면 가입하세요.</p>
-          <button 
-            margin="10px 0px 0px"
-            height="60px">
-              
-                Facebook으로 로그인
-          </button>
+          <center>
+          <img
+            src="img/insta_logo.png"            
+            width="250"
+            height="70px"
+            margin= "50px auto"
+          ></img>
+          </center>
           <input
             placeholder="이메일"
-            width="50%"
-            height="60px"                        
-            name="Id"
+            style={{
+              border: "1px solid #C0C0C0",
+              borderRadius: "5px",
+              width: "310px",
+              height: "35px",
+              name: "Id",
+              marginTop: "35px",
+            }}
           ></input>
           <input
             placeholder="비밀번호"
-            width="50%"
-            height="60px"
-            name="Pwd"
-            type="password"
+            paddingTop="20px"
+            style={{
+              border: "1px solid #C0C0C0",
+              borderRadius: "5px",
+              width: "310px",
+              height: "35px",
+              name: "Pwd",
+              type: "password",
+              marginTop: "5px",
+            }}
           ></input>
-          <button margin="10px 0px 0px">로그인</button>
+          <button
+            paddingTop="20px"
+            border="0 solid black"
+            onClick={()=>{ history.push('/Main')}}
+            style={{              
+              boxShadow: "none",
+              border: "0px",
+              borderRadius: "5px",
+              width: "320px",
+              height: "40px",
+              backgroundColor: "#62bdfa",
+              color: "#ffffff",
+              marginTop: "35px",
+              marginBottom: "35px",
+            }}
+          >
+            로그인
+          </button>
+          <hr />
+
+          <button
+            style={{
+              color: "#385185",
+              border: "0px",
+              width: "320px",
+              height: "60px",
+              backgroundColor: "#ffffff",
+              fontSize: "16px",
+              fontWeight: "600",
+              marginTop: "25px",
+            }}
+          >
+            <headerIcon.AiFillFacebook
+              color="#385185"
+              size="20"
+              // ="10px" 위치움직이는거 어케해ㅠㅠ
+            />
+            Facebook으로 로그인
+          </button>
+          
+            <p align="center">계정이 없으신가요?
+            <button
+            onClick={()=>{ history.push('/Signup')}}
+            style={{              
+              color: "#62bdfa",
+              border: "0px",
+              width: "80px",
+              height: "40px",
+              backgroundColor: "#ffffff",
+              fontSize: "16px",
+              fontWeight: "600",                          
+            }}
+            >가입하기</button></p>
+          
+          
         </form>
       </LoginContainer>
-    </ImgContainer>
+      {/* <StoreContainer>
+        <center>
+          <img src="img/apple.png"  height="30px" width="150px"></img>
+          <img src="img/google.png"  height="30px" width="150px"></img>
+        </center>
+      </StoreContainer> */}
+      
+    </div>
   );
 };
 
-const ImgContainer = styled.div`
-display: flex;
-align-items: center;
-justify-content: space-between;
-height: 900px;
-margin-left: 500px;
 
-`;
+const ImgContainer = styled.div`  
+  align-items: center;
+  justify-content: space-around;
+  /* float: left; */
+  margin: 50px auto 50px 350px;
+  width: 420px;  
+  `;
+  
 
 const LoginContainer = styled.div`
-display: flex;
-flex-direction: column;
-padding-right: 50px;
-padding-left: 50px;
-margin-right: 500px;
-justify-content: space-between;
-border: 1px solid #C0C0C0;
-width: 200px;
-height: 450px;
-font-size: 18px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  /* float: right; */
+  margin: 50px 400px 50px auto;
+  border: 1px solid #c0c0c0;
+  width: 300px;
+  height: 450px;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 44px 50px 10px 37px;
 `;
 
-
-// const Login = () => {
-//   return (
-//     <Grid width="375px">
-//       <Grid bg="#fff" border="1px solid #DBDBDB">
-//         <Grid center="center" padding="34px 42px 0px">
-//           <Logo src={logo} />
-//         </Grid>
-//         <Grid is_flex padding="34px 42px" column="column" gap="10px">
-//           <Input
-//             placeholder="이메일"
-//             width="100%"
-//             name="IdState"
-            
-//           ></Input>
-//           <Input
-//             placeholder="비밀번호"
-//             width="100%"
-//             name="PwState"
-//             type="password"
-            
-//           ></Input>
-//           <Button
-//             margin="10px 0px 0px"
-//             className={succeed === false ? "unActiveBtn" : ""}
-            
-//           >
-//             로그인
-//           </Button>
-//         </Grid>
-//       </Grid>
-//       <Button
-//         border="1px solid #DBDBDB"
-//         margin="10px 0px 0px"
-//         padding="24px 42px"
-//         bg="#fff"
-//         color="#000"
-       
-//       >
-//         계정이 없으신가요?{" "}
-//         <span style={{ color: "#0095F6", fontWeight: "bold" }}>가입하기</span>
-//       </Button>
-//       {noneDate ? <Warning>모든 입력해 주십시오</Warning> : ""}
-//     </Grid>
-//   );
-// };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const SignIn = props => {
-//   return (
-//     <SenterWep>
-//       <Grid is_flex justifyContent gap="30px" width="auto">
-//         <LoginImg src={signin_img} />
-//         <SignBox />
-//       </Grid>
-//     </SenterWep>
-//   );
-// };
-// const LoginImg = styled.img`
-//   display: block;
-//   @media (max-width: 935px) {
-//     display: none;
-//   }
+// const StoreContainer = styled.div`
+// display: flex;
+// align-items: center;
+// flex-direction: row;
+// flex-flow: row nowrap;
+// justify-content: space-around;
+// margin: 50px auto 50px auto;
 // `;
-// const SenterWep = styled.div`
-//   width: auto;
-//   height: atuo;
-//   position: absolute;
-//   left: 50%;
-//   top: 50%;
-//   transform: translate(-50%, -50%);
-// `;
-// const Logo = styled.img`
-//   width: 150px;
-//   height: 23%;
-//   cursor: pointer;
-// `;
-
-
-// const Login = () => {
-//   return <div>Login</div>;
-// };
-
 
 export default Login;
