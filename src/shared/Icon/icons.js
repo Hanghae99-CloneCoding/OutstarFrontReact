@@ -1,10 +1,17 @@
-import { HiHome } from "react-icons/hi";
-import { IoPaperPlaneOutline } from "react-icons/io5";
+import { HiHome, HiOutlinePhotograph } from "react-icons/hi";
+import { IoPaperPlaneOutline, IoChatbubbleOutline } from "react-icons/io5";
 import { FaRegPlusSquare } from "react-icons/fa";
-import { ImCompass2 } from "react-icons/im";
-import { FiHeart } from "react-icons/fi";
+import { ImCompass2, ImCancelCircle } from "react-icons/im";
+import { FiHeart, FiMapPin } from "react-icons/fi";
 import { BsPersonCircle, BsSearch } from "react-icons/bs";
+import {
+  BiDotsHorizontalRounded,
+  BiBookmark,
+  BiChevronDown,
+} from "react-icons/bi";
+import { CgPlayButtonR } from "react-icons/cg";
 import { AiFillFacebook } from "react-icons/ai";
+
 
 const headerIcon = {
   HiHome,
@@ -14,6 +21,14 @@ const headerIcon = {
   FiHeart,
   BsPersonCircle,
   BsSearch,
+  BiDotsHorizontalRounded,
+  IoChatbubbleOutline,
+  BiBookmark,
+  HiOutlinePhotograph,
+  CgPlayButtonR,
+  ImCancelCircle,
+  FiMapPin,
+  BiChevronDown,
   AiFillFacebook,
 };
 

@@ -8,6 +8,9 @@ import Logo from "../shared/Icon/insta_logo.png";
 
 export const Header = () => {
   const history = useHistory();
+  if (window.location.pathname === "/") return null;
+  if (window.location.pathname === "/signup") return null;
+  if (window.location.pathname === "/addpost") return null;
   return (
     <Contain>
       <Icon1 size="5" src={Logo} onClick={() => history.push("/main")} />
@@ -20,7 +23,11 @@ export const Header = () => {
           <headerIcon.IoPaperPlaneOutline />
         </Icon4>
         <Icon5>
-          <headerIcon.FaRegPlusSquare />
+          <headerIcon.FaRegPlusSquare
+            onClick={() => {
+              history.push("/addpost");
+            }}
+          />
         </Icon5>
         <Icon6>
           <headerIcon.ImCompass2 />
@@ -39,9 +46,13 @@ export const Header = () => {
 const Contain = styled.header`
   border: 0.1px solid #c1c1c1;
   display: flex;
-  justify-content: center;
   justify-content: space-evenly;
   background-color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 `;
 
 const Stinput = styled.input`
