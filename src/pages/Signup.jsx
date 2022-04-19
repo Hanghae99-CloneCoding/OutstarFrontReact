@@ -4,19 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { headerIcon } from "../shared/Icon/icons";
 import { AiOutlineFontColors } from "react-icons/ai";
 import { history } from "../redux/configureStore";
-import { actionCreators as userActions } from "../redux/modules/user";
+import { actionCreators as userActions } from '../redux/modules/user';
+
+
 
 const Signup = (props) => {
   const { history } = props;
   const dispatch = useDispatch();
 
-  const [nickname, setId] = useState("");
+  const [email, setId] = useState("");
+  const [username, setUser] = useState("");
   const [password, setPwd] = useState("");
-  const [confirmPassword, setPwdCheck] = useState("");
+  
 
   const signup = () => {
-    dispatch(userActions.signUpDB(nickname, password, confirmPassword));
-  };
+    dispatch(userActions.signUpDB(email, username, password));
+  }
+
+
 
   return (
     <div className="signup">
@@ -55,6 +60,10 @@ const Signup = (props) => {
           </button>
           <hr />
           <input
+            onChange={(e) => {
+              setId(e.target.value);
+            }}
+            value={email}
             placeholder="이메일"
             style={{
               border: "1px solid #C0C0C0",
@@ -66,6 +75,10 @@ const Signup = (props) => {
             }}
           ></input>
           <input
+            onChange={(e) => {
+              setUser(e.target.value);
+            }}
+            value={username}
             placeholder="성명"
             style={{
               border: "1px solid #C0C0C0",
@@ -77,24 +90,27 @@ const Signup = (props) => {
             }}
           ></input>
           <input
+            onChange={(e) => {
+              setPwd(e.target.value);
+            }}
+            value={password}
             placeholder="비밀번호"
             paddingTop="20px"
+            type= "password"
             style={{
               border: "1px solid #C0C0C0",
               borderRadius: "5px",
               width: "310px",
               height: "35px",
               name: "Pwd",
-              type: "password",
               marginTop: "5px",
             }}
           ></input>
           <button
             paddingTop="20px"
             border="0 solid black"
-            onClick={() => {
-              history.push("/");
-            }}
+            onClick={signup}
+            type="button"
             style={{
               boxShadow: "none",
               border: "0px",
