@@ -3,16 +3,11 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { headerIcon } from "../shared/Icon/icons";
 import { AiOutlineFontColors } from "react-icons/ai";
-import { history } from "../redux/modules/configureStore";
-import { actionCreators as userActions } from '../redux/modules/user';
-
-
-
-
-
+import { history } from "../redux/configureStore";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 const Signup = (props) => {
-  const {history} = props;
+  const { history } = props;
   const dispatch = useDispatch();
 
   const [nickname, setId] = useState("");
@@ -20,24 +15,20 @@ const Signup = (props) => {
   const [confirmPassword, setPwdCheck] = useState("");
 
   const signup = () => {
-    
-
     dispatch(userActions.signUpDB(nickname, password, confirmPassword));
-  }
-
-
+  };
 
   return (
     <div className="signup">
       <SignInContainer>
         <form>
-        <center>
-          <img
-            src="img/insta_logo.png"            
-            width="250"
-            height="70px"
-            margin= "50px auto"
-          ></img>
+          <center>
+            <img
+              src="img/insta_logo.png"
+              width="250"
+              height="70px"
+              margin="50px auto"
+            ></img>
           </center>
           <p align="center">친구들의 사진과 동영상을 보려면</p>
           <p align="center">가입하세요</p>
@@ -62,7 +53,7 @@ const Signup = (props) => {
             />
             Facebook으로 로그인
           </button>
-          <hr/>
+          <hr />
           <input
             placeholder="이메일"
             style={{
@@ -101,7 +92,9 @@ const Signup = (props) => {
           <button
             paddingTop="20px"
             border="0 solid black"
-            onClick={()=>{ history.push('/')}}
+            onClick={() => {
+              history.push("/");
+            }}
             style={{
               boxShadow: "none",
               border: "0px",
@@ -116,28 +109,32 @@ const Signup = (props) => {
           >
             가입
           </button>
-          
-          <p align="center">계정이 있으신가요?
-          <button 
-            onClick={()=>{ history.push('/')}}
-            style={{
-              color: "#0095f6",
-              border: "0px",
-              width: "80px",
-              height: "60px",
-              backgroundColor: "#ffffff",
-              fontSize: "16px",
-              fontWeight: "600",
-              marginTop: "5px",            
-            }}
-            > 로그인
-          </button></p>
+
+          <p align="center">
+            계정이 있으신가요?
+            <button
+              onClick={() => {
+                history.push("/");
+              }}
+              style={{
+                color: "#0095f6",
+                border: "0px",
+                width: "80px",
+                height: "60px",
+                backgroundColor: "#ffffff",
+                fontSize: "16px",
+                fontWeight: "600",
+                marginTop: "5px",
+              }}
+            >
+              {" "}
+              로그인
+            </button>
+          </p>
         </form>
       </SignInContainer>
       <LogContainer>
-        <form>
-
-        </form>
+        <form></form>
       </LogContainer>
       {/* <form >
         <p>계정이 없으신가요?</p><p>가입하기</p>
@@ -145,8 +142,6 @@ const Signup = (props) => {
     </div>
   );
 };
-
-
 
 const SignInContainer = styled.div`
   display: flex;
@@ -164,12 +159,7 @@ const SignInContainer = styled.div`
   padding: 44px 50px 10px 37px;
 `;
 
-const LogContainer = styled.div`
-  
-`;
-
-
-
+const LogContainer = styled.div``;
 
 // const Login = () => {
 //   return (

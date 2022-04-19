@@ -1,8 +1,19 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { actionCreators as postActions } from "../redux/modules/post";
+
+//components
 import Post from "../components/Post";
 
 const Main = (props) => {
+  const dispatch = useDispatch();
+  const post_list = useSelector((state) => state.post.mainData);
+  console.log(post_list);
+
+  React.useEffect(() => {
+    dispatch(postActions.getPostDB());
+  }, []);
   return (
     <div
       style={{
@@ -11,8 +22,9 @@ const Main = (props) => {
       }}
     >
       <Sttitle>메인페이지 </Sttitle>
-      <Post />
-      <Post />
+      {post_list.map((p, idx) => {
+        return <Post key={p.postId} post={post_list} {...p} />;
+      })}
       <Post />
     </div>
   );

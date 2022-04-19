@@ -1,11 +1,11 @@
 import axios from "axios";
 
-
 const TOKEN = localStorage.getItem("token");
 
 const api = axios.create({
   // 기본 서버주소
-  baseURL: "http://denia-wwdt.shop", });
+  baseURL: "http://3.38.116.203",
+});
 
 // api.interceptors.request.use(
 //   function (config) {
@@ -18,8 +18,7 @@ const api = axios.create({
 //   }
 // );
 
-
- /*  // 게시물 불러오기
+/*  // 게시물 불러오기
   getPost: () => instance.get("/", {}),
   // 게시물 작성하기
   addPost: (contents) => instance.post("/api/posts", contents),
@@ -47,7 +46,5 @@ const api = axios.create({
     instance.delete(`/api/posts/${postUid}/${userUid}`),
   // 마이페이지 불러오기
   getMyPage: (id) => instance.get(`/users/${id}`), */
-
-
 
 export default api;
