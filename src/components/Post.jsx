@@ -7,7 +7,7 @@ import Logo from "../shared/Icon/insta_logo.png";
 import Detail from "./Detail";
 import MenuX from "./MenuX";
 
-const Post = () => {
+const Post = (props) => {
   const history = useHistory();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -17,13 +17,13 @@ const Post = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
-  const [modalOpen2, setModalOpen2] = useState(false);
-  const openModal2 = () => {
-    setModalOpen2(true);
-  };
-  const closeModal2 = () => {
-    setModalOpen2(false);
-  };
+  // const [modalOpen2, setModalOpen2] = useState(false);
+  // const openModal2 = () => {
+  //   setModalOpen2(true);
+  // };
+  // const closeModal2 = () => {
+  //   setModalOpen2(false);
+  // };
 
   // window.addEventListener("keyup", (e) => {
   //   if (setModalOpen(false) && e.key === "Escape") {
@@ -35,14 +35,10 @@ const Post = () => {
   //     setModalOpen2(true);
   //   }
   // });
-  const newDate = new Date(+new Date() + 3240 * 10000)
-    .toISOString()
-    .replace("T", " ")
-    .replace(/\..*/, "");
-  const [이름, 이름변경] = useState(["T없이맑은I", "ㅎr늘색풍선"]);
+
   const getRandom = (min, max) => Math.floor(Math.random() * (max - min) + min);
-  console.log(openModal);
-  console.log(openModal2);
+  // console.log(openModal);
+  // console.log(openModal2);
 
   return (
     <div style={{ backgroundColor: "#fafafa" }}>
@@ -61,15 +57,15 @@ const Post = () => {
                 margin: " 10px",
               }}
             />
-            <div style={{ fontSize: "14px" }}>{이름[0]}</div>
-            <Stmenu>
-              <headerIcon.BiDotsHorizontalRounded onClick={openModal} />
+            <div style={{ fontSize: "14px" }}>{props.username}</div>
+            <Stmenu type="button" onClick={openModal}>
+              <headerIcon.BiDotsHorizontalRounded />
             </Stmenu>
           </div>
         </div>
         <div>
           <img
-            src={Logo}
+            src={props.imgUrl}
             style={{
               border: "1px solid #aaaaaa",
               width: "470px",
@@ -94,10 +90,10 @@ const Post = () => {
           </button>
         </StIcon>
         <div style={{ marginLeft: "10px" }}>
-          <b>{이름[1]}</b>님 <b>외 {getRandom(1, 1000)}</b>명이 좋아합니다.
+          <b>{}</b>님 <b>외 {getRandom(1, 1000)}</b>명이 좋아합니다.
         </div>
         <div style={{ marginLeft: "10px", marginTop: "10px" }}>
-          <b>{이름[0]}</b> 콘솔을 많이 찍어보자...😢
+          <b>{props.username}</b> {props.content}
         </div>
         <StcommentsIn
           onClick={() => {
@@ -107,7 +103,9 @@ const Post = () => {
           {/* <Detail open2={modalOpen2} close2={closeModal2} /> */}
           댓글 {getRandom(1, 50)}개 모두 보기
         </StcommentsIn>
-        <div style={{ marginTop: "15px", marginLeft: "10px" }}>{newDate}</div>
+        <div style={{ marginTop: "15px", marginLeft: "10px" }}>
+          {props.modifiedAt}
+        </div>
         <Stcomments placeholder="댓글 달기..." multiLine></Stcomments>
         <StcommentsBtn type="submit">게시</StcommentsBtn>
       </Stform>
@@ -167,7 +165,7 @@ const StcommentsBtn = styled.button`
   background-color: #ffffff;
 `;
 
-const Stform = styled.form`
+const Stform = styled.div`
   border: 1px solid #aaaaaa;
   margin: 15px 815px 0 627px;
   height: 780px;
