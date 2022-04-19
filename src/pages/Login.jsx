@@ -9,12 +9,12 @@ const Login = (props) => {
   const {history} = props
   const dispatch = useDispatch();
 
-  const [nickname, setId] = useState("");
+  const [email, setId] = useState("");
   const [password, setPwd] = useState("");
 
   const login = () => {
 
-    dispatch(userActions.loginDB(nickname, password));
+    dispatch(userActions.loginDB(email, password));
   }
 
   return (
@@ -29,11 +29,14 @@ const Login = (props) => {
             src="img/insta_logo.png"            
             width="250"
             height="70px"
-            margin= "50px auto"
+            margin= "50px auto"            
           ></img>
           </center>
           <input
+            onChange={(e) => {
+              setId(e.target.value);}}
             placeholder="이메일"
+            value={email}
             style={{
               border: "1px solid #C0C0C0",
               borderRadius: "5px",
@@ -44,22 +47,27 @@ const Login = (props) => {
             }}
           ></input>
           <input
+            onChange={(e) => {
+              setPwd(e.target.value);}}
             placeholder="비밀번호"
             paddingTop="20px"
+            value={password}
+            type= "password"
             style={{
               border: "1px solid #C0C0C0",
               borderRadius: "5px",
               width: "310px",
               height: "35px",
-              name: "Pwd",
-              type: "password",
+              name: "Pwd", 
               marginTop: "5px",
             }}
           ></input>
           <button
+            onClick={login}
+            type="button"
             paddingTop="20px"
             border="0 solid black"
-            onClick={()=>{ history.push('/Main')}}
+            // onClick={()=>{ history.push('/main')}}
             style={{              
               boxShadow: "none",
               border: "0px",
@@ -76,7 +84,7 @@ const Login = (props) => {
           </button>
           <hr />
 
-          <button
+          <button            
             style={{
               color: "#385185",
               border: "0px",
