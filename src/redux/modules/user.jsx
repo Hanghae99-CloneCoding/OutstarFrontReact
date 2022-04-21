@@ -47,6 +47,7 @@ const loginDB = (email, password) => {
         dispatch(
           login({
             is_login: true,
+
             email: email,
             username: DecodedToken.sub,
             //위치불확실 콘솔찍어서 확인
@@ -56,10 +57,23 @@ const loginDB = (email, password) => {
         console.log("로그인성공!!");
       })
       .catch((error) => {
+        alert(error.response.data.msg);
         // console.log(error)
       });
   };
 };
+
+// const loginCheckDB = () => {
+//   return function (dispatch, getState, { history }) {
+//     const username = localStorage.getItem("username");
+//     const tokenCheck = document.cookie;
+//     if (tokenCheck) {
+//       dispatch(login({ username: username }));
+//     } else {
+//       dispatch(logOut());
+//     }
+//   };
+// };
 
 // const loginCheckDB = () => {
 //   return function (dispatch, getState, { history }) {
@@ -79,6 +93,7 @@ const signUpDB = (email, username, password) => {
     axios
       .post("http://3.38.116.203/user/signup", {
         email: email,
+
         username: username,
         password: password,
       })
@@ -126,6 +141,7 @@ const actionCreators = {
   getUser,
   signUpDB,
   logOut,
+
   //   loginCheckDB,
 };
 

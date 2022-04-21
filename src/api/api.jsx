@@ -5,6 +5,11 @@ import axios from "axios";
 const api = axios.create({
   // 기본 서버주소
   baseURL: "http://3.38.116.203/",
+
+  headers: {
+    // "content-type": "application/json;charset=UTF-8",
+    accept: "application/json,",
+  },
 });
 
 // api.interceptors.request.use(function (config) {
@@ -13,16 +18,60 @@ const api = axios.create({
 //   return config;
 // });
 
-export const apis = {
-  // 회원가입 요청
-  signUp: (userInfo) => api.post("user/signup", userInfo),
-  // 로그인
-  login: (data) =>
-    api.post("user/login", {
-      username: data.username,
-      password: data.password,
-    }),
-  // 로그인 체크
-};
-
 export default api;
+
+// api.interceptors.request.use(
+//   function (config) {
+//     config.headers.common["Authorization"] = `Bearer ${TOKEN}`;
+//     console.log(TOKEN)
+//     return config;
+//   },
+//   // function (error) {
+//   //   console.log("err");
+//   //   return Promise.reject(error);
+//   // }
+// );
+
+// export const api = axios.create({
+//   // 실제 베이스 유알엘
+//   baseURL: "http://denia-wwdt.shop",
+//   headers: {
+//     "content-type": "application/json;charset=UTF-8",
+//     accept: "application/json",
+//   },
+// });
+
+// api.interceptors.request.use(function (config) {
+//   const TOKEN = localStorage.getItem("token");
+//   config.headers["authorization"] = `Bearer ${TOKEN}`;
+//   return config;
+// });
+
+/*  // 게시물 불러오기
+  getPost: () => instance.get("/", {}),
+  // 게시물 작성하기
+  addPost: (contents) => instance.post("/api/posts", contents),
+  // 게시물 수정하기
+  editPost: (id, content) => instance.put(`/api/posts/${id}`, content),
+  // 게시물 삭제하기
+  deletePost: (id) => instance.delete(`/api/posts/${id}`),
+  //게시물 상세페이지 불러오기
+  getPostDetail: (id) => instance.get(`/posts/${id}`),
+  // 댓글 추가
+  addComment: (comment, id) =>
+    instance.post(`/api/posts/${id}/comments/`, comment),
+  // 댓글 삭제
+  deleteComment: (postUid, commentUid) =>
+    instance.delete(`/api/posts/${postUid}/comments/${commentUid}`),
+  // 좋아요 추가
+  addLike: (id) => instance.post(`/api/likes/${id}`),
+  // 좋아요 취소
+  deleteLike: (id) => instance.delete(`/api/likes/${id}`),
+  // 모임 참석
+  attendPost: (postUid, userUid) =>
+    instance.post(`/api/posts/${postUid}/${userUid}`),
+  // 모임 취소
+  notAttendPost: (postUid, userUid) =>
+    instance.delete(`/api/posts/${postUid}/${userUid}`),
+  // 마이페이지 불러오기
+  getMyPage: (id) => instance.get(`/users/${id}`), */
