@@ -23,8 +23,6 @@ const initialState = {
 
 //------------------middleware------------------------------
 
-
-
 //-------------로그인-------------------
 const loginDB = (email, password) => {
   return function (dispatch, getState, { history }) {
@@ -32,7 +30,7 @@ const loginDB = (email, password) => {
       .post("http://3.38.116.203/user/login", {
         email: email,
         password: password,
-      })            
+      })
       .then((res) => {
         console.log(res);
         const token = res.headers.authorization;
@@ -49,34 +47,45 @@ const loginDB = (email, password) => {
         dispatch(
           login({
             is_login: true,
-            "email": email,
-            "username": DecodedToken.sub,                
-          //위치불확실 콘솔찍어서 확인                 
-              })                
-            );
-        history.replace("/main");    
-        console.log("로그인성공!!")    
+
+            email: email,
+            username: DecodedToken.sub,
+            //위치불확실 콘솔찍어서 확인
+          })
+        );
+        history.replace("/main");
+        console.log("로그인성공!!");
       })
       .catch((error) => {
         alert(error.response.data.msg);
         // console.log(error)
       });
-    }}
-  
-  // const loginCheckDB = () => {
-  //   return function (dispatch, getState, { history }) {
-  //     const username = localStorage.getItem("username");
-  //     const tokenCheck = document.cookie;
-  //     if (tokenCheck) {
-  //       dispatch(login({ username: username }));
-  //     } else {
-  //       dispatch(logOut());
-  //     }
-  //   };
-  // };
+  };
+};
 
+// const loginCheckDB = () => {
+//   return function (dispatch, getState, { history }) {
+//     const username = localStorage.getItem("username");
+//     const tokenCheck = document.cookie;
+//     if (tokenCheck) {
+//       dispatch(login({ username: username }));
+//     } else {
+//       dispatch(logOut());
+//     }
+//   };
+// };
 
-
+// const loginCheckDB = () => {
+//   return function (dispatch, getState, { history }) {
+//     const username = localStorage.getItem("username");
+//     const tokenCheck = document.cookie;
+//     if (tokenCheck) {
+//       dispatch(login({ username: username }));
+//     } else {
+//       dispatch(logOut());
+//     }
+//   };
+// };
 
 //------------회원가입-------------------
 const signUpDB = (email, username, password) => {
@@ -84,7 +93,8 @@ const signUpDB = (email, username, password) => {
     axios
       .post("http://3.38.116.203/user/signup", {
         email: email,
-        username:username,
+
+        username: username,
         password: password,
       })
       .then((res) => {
@@ -124,10 +134,6 @@ export default handleActions(
   initialState
 );
 
-
-
-
-
 //action creator export
 const actionCreators = {
   login,
@@ -135,7 +141,8 @@ const actionCreators = {
   getUser,
   signUpDB,
   logOut,
-//   loginCheckDB,
+
+  //   loginCheckDB,
 };
 
 export { actionCreators };

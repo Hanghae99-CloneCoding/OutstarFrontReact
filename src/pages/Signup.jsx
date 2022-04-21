@@ -4,9 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { headerIcon } from "../shared/Icon/icons";
 import { AiOutlineFontColors } from "react-icons/ai";
 import { history } from "../redux/configureStore";
-import { actionCreators as userActions } from '../redux/modules/user';
-
-
+import { actionCreators as userActions } from "../redux/modules/user";
 
 const Signup = (props) => {
   const { history } = props;
@@ -15,13 +13,10 @@ const Signup = (props) => {
   const [email, setId] = useState("");
   const [username, setUser] = useState("");
   const [password, setPwd] = useState("");
-  
 
   const signup = () => {
     dispatch(userActions.signUpDB(email, username, password));
-  }
-
-
+  };
 
   return (
     <div className="signup">
@@ -96,7 +91,7 @@ const Signup = (props) => {
             value={password}
             placeholder="비밀번호"
             paddingTop="20px"
-            type= "password"
+            type="password"
             style={{
               border: "1px solid #C0C0C0",
               borderRadius: "5px",

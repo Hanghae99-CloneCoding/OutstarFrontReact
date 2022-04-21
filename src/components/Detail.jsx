@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import styled from "styled-components";
+import "../css/Addpost.css";
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useSelector } from "react-redux";
 
 import Logo from "../shared/Icon/insta_logo.png";
 import { headerIcon } from "../shared/Icon/icons";
-import "../css/Addpost.css";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const newDate = new Date(+new Date() + 3240 * 10000)
   .toISOString()
@@ -48,7 +50,6 @@ const Detail = (props) => {
               </Stside>
               <div
                 style={{
-                  border: "1px solid pink",
                   width: "400px",
                   height: "500px",
                 }}
@@ -101,7 +102,6 @@ const Contain = styled.div`
   display: flex;
   width: 60vw;
   height: 80vh;
-  border: 1px solid green;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -109,11 +109,13 @@ const Contain = styled.div`
 `;
 
 const StPostimg = styled.img`
-  border: 1px solid red;
   /* width: 600px;
   height: 700px;
   margin-right: 100px; */
-
+  border: 1px solid #aaaaaa;
+  border-left: none;
+  border-top: none;
+  border-bottom: none;
   display: inline-block;
   width: 100vw;
   height: 80vh;
@@ -125,7 +127,6 @@ const StPostimg = styled.img`
 
 const Stside = styled.div`
   display: flex;
-  border: 1px solid blue;
   background-color: white;
 
   width: 400px;
@@ -149,7 +150,7 @@ const StBtn = styled.div`
 `;
 
 const Stcomment = styled.input`
-  width: 340px;
+  width: 330px;
   height: 45px;
   margin-top: 27px;
   border: 1px solid #aaaaaa;
