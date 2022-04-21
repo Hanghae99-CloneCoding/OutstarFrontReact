@@ -10,8 +10,7 @@ import {
   BiChevronDown,
 } from "react-icons/bi";
 import { CgPlayButtonR } from "react-icons/cg";
-import { AiFillFacebook } from "react-icons/ai";
-
+import { AiFillFacebook, AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 const headerIcon = {
   HiHome,
@@ -30,6 +29,8 @@ const headerIcon = {
   FiMapPin,
   BiChevronDown,
   AiFillFacebook,
+  AiFillHeart,
+  AiOutlineHeart,
 };
 
 export { headerIcon };
