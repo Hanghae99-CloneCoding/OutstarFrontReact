@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import { headerIcon } from "../shared/Icon/icons";
 import Logo from "../shared/Icon/insta_logo.png";
 import Detail from "./Detail";
-import MenuX from "./MenuX";
+import MenuO from "./MenuO";
 
 const Post = (props) => {
+  const postId = useParams();
   const history = useHistory();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -17,6 +20,15 @@ const Post = (props) => {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  //---------------------좋아요----------------------------
+  const [Like, DisLike] = useState(false);
+
+  const CLike = () => {
+    DisLike(!Like);
+  };
+
+  const [Liked, LikedChange] = useState(0);
   // const [modalOpen2, setModalOpen2] = useState(false);
   // const openModal2 = () => {
   //   setModalOpen2(true);
@@ -57,7 +69,9 @@ const Post = (props) => {
                 margin: " 10px",
               }}
             />
-            <div style={{ fontSize: "14px" }}>{props.username}</div>
+            <div style={{ fontSize: "20px", marginTop: "10px" }}>
+              {props.username}
+            </div>
             <Stmenu type="button" onClick={openModal}>
               <headerIcon.BiDotsHorizontalRounded />
             </Stmenu>
@@ -67,16 +81,43 @@ const Post = (props) => {
           <img
             src={props.imgUrl}
             style={{
-              border: "1px solid #aaaaaa",
               width: "470px",
               height: "470px",
+              borderTop: "none",
+              borderbottom: "none",
             }}
           />
         </div>
         <StIcon>
           <div>
             <button>
-              <headerIcon.FiHeart style={{ marginRight: "15px" }} />
+              <div
+                className="LikeIcon"
+                onClick={() => {
+                  LikedChange(Liked + 1);
+                  CLike();
+                }}
+              >
+                {/* // {()=> LikedChange(Liked+1); CLike();}> */}
+                {Like ? (
+                  <headerIcon.AiFillHeart
+                    className="LikeIcon"
+                    style={{
+                      color: "red",
+                      fontSize: "30px",
+                      marginRight: "15px",
+                    }}
+                  />
+                ) : (
+                  <headerIcon.AiOutlineHeart
+                    className="LikeFillIcon"
+                    style={{
+                      marginRight: "15px",
+                      fontSize: "30px",
+                    }}
+                  />
+                )}
+              </div>
             </button>
             <button>
               <headerIcon.IoChatbubbleOutline style={{ marginRight: "15px" }} />
@@ -89,15 +130,20 @@ const Post = (props) => {
             <headerIcon.BiBookmark />
           </button>
         </StIcon>
-        <div style={{ marginLeft: "10px" }}>
-          <b>{}</b>님 <b>외 {getRandom(1, 1000)}</b>명이 좋아합니다.
+        <div
+          style={{ marginLeft: "10px" }}
+          onClick={() => {
+            LikedChange(Liked + 1);
+          }}
+        >
+          <b>{}</b>님 <b>외 {Liked}</b>명이 좋아합니다.
         </div>
         <div style={{ marginLeft: "10px", marginTop: "10px" }}>
           <b>{props.username}</b> {props.content}
         </div>
         <StcommentsIn
           onClick={() => {
-            history.push("/detail");
+            history.push("/detail/");
           }}
         >
           {/* <Detail open2={modalOpen2} close2={closeModal2} /> */}
@@ -109,7 +155,7 @@ const Post = (props) => {
         <Stcomments placeholder="댓글 달기..." multiLine></Stcomments>
         <StcommentsBtn type="submit">게시</StcommentsBtn>
       </Stform>
-      <MenuX open={modalOpen} close={closeModal} />
+      <MenuO open2={modalOpen} close2={closeModal} />
     </div>
   );
 };

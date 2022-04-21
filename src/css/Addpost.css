@@ -170,22 +170,26 @@
 }
 
 .NewPostCreate {
-  margin: 10px 0 0 450px;
   font-size: 17px;
   font-weight: 600;
-  position: fixed;
+  text-align: center;
+  padding-top: 25px;
 }
 
 .NewPostAdd {
   float: right;
-  margin: 13px 30px 0 0;
+  margin: 1px 30px 0;
   color: #00c3ff;
+  border: none;
+  background-color: white;
+  line-height: 1px;
+  font-size: 15px;
 }
 
 .TopLine {
   color: rgba(128, 128, 128, 0.5);
   width: 997px;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 
 .ImgSideBox {
@@ -193,6 +197,9 @@
   width: 596px;
   height: 550px;
   margin-bottom: 30px;
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
 }
 
 .PhotoIcon {
@@ -257,12 +264,18 @@
   border: 1px solid #aaaaaa;
   width: 400px;
   height: 550px;
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
 }
 
 .RightBox1 {
-  border: 1px solid blue;
   width: 400px;
   height: 80px;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 60px;
 }
 .RightBox2 {
   border: 1px solid #aaaaaa;
@@ -271,6 +284,7 @@
   border-top: none;
   width: 393px;
   height: 300px;
+  font-family: Georgia;
 }
 .RightBox3 {
   width: 363px;

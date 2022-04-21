@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { headerIcon } from "../shared/Icon/icons";
 
-export const Sidebar = () => {
+export const Sidebar = (props) => {
+  const userName = localStorage.getItem("username");
+
   const [이름, 이름변경] = useState(["T없이맑은I", "ㅎr늘색풍선"]);
   if (window.location.pathname === "/") return null;
   if (window.location.pathname === "/signup") return null;
-  if (window.location.pathname === "/addpost") return null;
+  if (window.location.pathname === "/main/addpost") return null;
 
   return (
     <StTitle>
@@ -15,7 +17,7 @@ export const Sidebar = () => {
         <headerIcon.BsPersonCircle
           style={{ color: "#cdcdcd", fontSize: "60px" }}
         />
-        <Stusername>{이름[0]}</Stusername>
+        <Stusername>{userName}</Stusername>
         <button>전환</button>
       </StProfile>
 
@@ -30,6 +32,7 @@ export const Sidebar = () => {
           <headerIcon.BsPersonCircle
             style={{ color: "#cdcdcd", fontSize: "35px" }}
           />
+          <Stusername>아이유</Stusername>
           <button>팔로우</button>
         </StProfile>
         <StProfile
@@ -38,6 +41,7 @@ export const Sidebar = () => {
           <headerIcon.BsPersonCircle
             style={{ color: "#cdcdcd", fontSize: "35px" }}
           />
+          <Stusername>G.dragon</Stusername>
           <button>팔로우</button>
         </StProfile>
         <StProfile
@@ -46,6 +50,7 @@ export const Sidebar = () => {
           <headerIcon.BsPersonCircle
             style={{ color: "#cdcdcd", fontSize: "35px" }}
           />
+          <Stusername>장동건</Stusername>
           <button>팔로우</button>
         </StProfile>
         <StProfile
@@ -54,6 +59,7 @@ export const Sidebar = () => {
           <headerIcon.BsPersonCircle
             style={{ color: "#cdcdcd", fontSize: "35px" }}
           />
+          <Stusername>주지훈</Stusername>
           <button>팔로우</button>
         </StProfile>
         <StProfile
@@ -62,6 +68,7 @@ export const Sidebar = () => {
           <headerIcon.BsPersonCircle
             style={{ color: "#cdcdcd", fontSize: "35px" }}
           />
+          <Stusername>수지</Stusername>
           <button>팔로우</button>
         </StProfile>
       </div>
