@@ -1,9 +1,9 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
-import api from "../../api/api";
+// import api from "../../api/api";
 import { setToken } from "../../shared/token";
 import jwtDecode from "jwt-decode";
-
+import axios from "axios";
 
 // action
 const LOGIN = "LOGIN";
@@ -28,8 +28,8 @@ const initialState = {
 //-------------로그인-------------------
 const loginDB = (email, password) => {
   return function (dispatch, getState, { history }) {
-    api
-      .post("/user/login", {
+    axios
+      .post("http://3.38.116.203/user/login", {
         email: email,
         password: password,
       })            
@@ -43,11 +43,13 @@ const loginDB = (email, password) => {
         console.log(DecodedToken);
         console.log(DecodedToken.sub);
 
+        localStorage.setItem("email", email);
         localStorage.setItem("username", DecodedToken.sub);
 
         dispatch(
           login({
             is_login: true,
+            "email": email,
             "username": DecodedToken.sub,                
           //위치불확실 콘솔찍어서 확인                 
               })                
@@ -61,13 +63,26 @@ const loginDB = (email, password) => {
       });
     }}
   
+  // const loginCheckDB = () => {
+  //   return function (dispatch, getState, { history }) {
+  //     const username = localStorage.getItem("username");
+  //     const tokenCheck = document.cookie;
+  //     if (tokenCheck) {
+  //       dispatch(login({ username: username }));
+  //     } else {
+  //       dispatch(logOut());
+  //     }
+  //   };
+  // };
+
+
 
 
 //------------회원가입-------------------
 const signUpDB = (email, username, password) => {
   return function (dispatch, getState, { history }) {
-    api
-      .post("/user/signup", {
+    axios
+      .post("http://3.38.116.203/user/signup", {
         email: email,
         username:username,
         password: password,

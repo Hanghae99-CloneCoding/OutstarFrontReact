@@ -36,7 +36,7 @@ const Addpost = (props) => {
           />
           <div className="FakeModalAddPost" style={{ width: "1000px" }}>
             <div>
-              <div className="NewPostCreate">새 개시물 만들기</div>
+              <div className="NewPostCreate">새 게시물 만들기</div>
               <button className="NewPostAdd" onClick={addPost}>
                 공유하기
               </button>

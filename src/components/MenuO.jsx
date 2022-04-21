@@ -1,27 +1,48 @@
 import React from "react";
 import styled from "styled-components";
-import "../shared/menu.css";
+import "../css/menu.css";
 
-const Menu = (props) => {
-  const { open3, close3 } = props;
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { actionCreators as postActions } from "../redux/modules/post";
+import { useParams } from "react-router-dom";
+
+const MenuO = (props) => {
+  console.log(props);
+  const params = useParams();
+  console.log(params);
+  const post_index = params.postId;
+  console.log(post_index);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const post_list = useSelector((state) => state.post.mainData);
+  console.log(post_list);
+  const { open2, close2 } = props;
 
   const Alert = () => {
     window.alert("아직 준비 중인 기능입니다");
   };
+  const deletePost = () => {
+    console.log(post_list.post_index);
+
+    if (window.confirm("게시글을 삭제하시겠습니까?")) {
+      return dispatch(postActions.deletePostDB(post_list.post_index));
+    }
+  };
 
   return (
     <>
-      <div className={open3 ? "openModal modal" : "modal"}>
-        {open3 ? (
+      <div className={open2 ? "openModal modal" : "modal"}>
+        {open2 ? (
           <section>
             <main>
               <ModalboxR onClick={Alert}>게시물 수정</ModalboxR>
-              <ModalboxR onClick={Alert}>게시물 삭제</ModalboxR>
+              <ModalboxR onClick={deletePost}>게시물 삭제</ModalboxR>
               <Modalbox onClick={Alert}>게시물로 이동</Modalbox>
               <Modalbox onClick={Alert}>공유 대상...</Modalbox>
               <Modalbox onClick={Alert}>링크 복사</Modalbox>
               <Modalbox onClick={Alert}>퍼가기</Modalbox>
-              <Modalbox onClick={close3}>취소</Modalbox>
+              <Modalbox onClick={close2}>취소</Modalbox>
             </main>
           </section>
         ) : null}
@@ -30,7 +51,7 @@ const Menu = (props) => {
   );
 };
 
-export default Menu;
+export default MenuO;
 
 const ModalboxR = styled.button`
   line-height: 1.5;

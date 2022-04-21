@@ -1,24 +1,55 @@
 import axios from "axios";
 
-const TOKEN = localStorage.getItem("token");
+
+// const TOKEN = localStorage.getItem("token");
 
 const api = axios.create({
   // 기본 서버주소
-  baseURL: "http://3.38.116.203",
+  baseURL: "http://3.38.116.203/",
+  headers: {
+    // "content-type": "application/json;charset=UTF-8",
+    accept: "application/json,",
+  }
 });
+
+  // api.interceptors.request.use(function (config) {
+  //   const accessToken = localStorage.getItem("token");
+  //   config.headers.Authorization = `${accessToken}`;
+  //   return config;
+  // });
+
+  export default api;
+
 
 // api.interceptors.request.use(
 //   function (config) {
-//     config.headers.Authorization = `Bearer ${TOKEN}`;
+//     config.headers.common["Authorization"] = `Bearer ${TOKEN}`;
+//     console.log(TOKEN)
 //     return config;
 //   },
-//   function (error) {
-//     console.log("err");
-//     return Promise.reject(error);
-//   }
+//   // function (error) {
+//   //   console.log("err");
+//   //   return Promise.reject(error);
+//   // }
 // );
 
-/*  // 게시물 불러오기
+// export const api = axios.create({
+//   // 실제 베이스 유알엘
+//   baseURL: "http://denia-wwdt.shop",
+//   headers: {
+//     "content-type": "application/json;charset=UTF-8",
+//     accept: "application/json",
+//   },
+// });
+
+// api.interceptors.request.use(function (config) {
+//   const TOKEN = localStorage.getItem("token");
+//   config.headers["authorization"] = `Bearer ${TOKEN}`;
+//   return config;
+// });
+
+
+ /*  // 게시물 불러오기
   getPost: () => instance.get("/", {}),
   // 게시물 작성하기
   addPost: (contents) => instance.post("/api/posts", contents),
@@ -47,4 +78,5 @@ const api = axios.create({
   // 마이페이지 불러오기
   getMyPage: (id) => instance.get(`/users/${id}`), */
 
-export default api;
+
+
